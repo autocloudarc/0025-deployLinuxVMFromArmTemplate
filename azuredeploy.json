@@ -1,0 +1,223 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "studentNumber": {
+      "type": "string",
+      "defaultValue": "00",
+      "allowedValues": [
+        "00",
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "metadata": {
+        "description": "Enter your 2 digit student number, i.e. ## (00-16)"
+      }
+    },
+    "cspCode": {
+      "defaultValue": "azr",
+      "allowedValues": [
+        "azr",
+        "aws"
+      ],
+      "type": "string",
+      "metadata": {
+        "description": "Enter the 3-letter cloud service provider code, i.e. azr = Azure"
+      }
+    },
+    "regionCode": {
+      "maxLength": 5,
+      "minLength": 5,
+      "allowedValues": [
+        "eaas1",
+        "seas1",
+        "ceus1",
+        "eaus1",
+        "eaus2",
+        "weus1",
+        "ncus1",
+        "scus1",
+        "nreu1",
+        "weeu1",
+        "wejp1",
+        "eajp1",
+        "stbr1",
+        "eaau1",
+        "seau1",
+        "stin1",
+        "cein1",
+        "wein1",
+        "ceca1",
+        "eaca1",
+        "stuk1",
+        "weuk1",
+        "wcus1",
+        "weus2",
+        "genr1",
+        "gece1",
+        "gene1",
+        "koce1",
+        "koso1",
+        "usgnr",
+        "usgia",
+        "usgtx",
+        "usdde",
+        "usddc"
+      ],
+      "type": "string",
+      "metadata": {
+        "description": "Enter the 5-character region code, ie. eaus2 for East US 2 using the hash table provided in section 3.5.2 of the delivery guide."
+      }
+    },
+    "lnxPrefix": {
+      "type": "string",
+      "defaultValue": "lx",
+      "metadata": {
+        "description": "This is the linux prefix and function code used for a Linux VM."
+      }
+    },
+    "vmSeriesNumber": {
+      "defaultValue": "04",
+      "allowedValues": [
+        "04",
+        "05",
+        "06"
+      ],
+      "type": "string",
+      "metadata": {
+        "description": "Enter the series number for this VM, i.e. 04"
+      }
+    },
+    "adminUserName": {
+      "defaultValue": "linux.user",
+      "type": "string",
+      "metadata": {
+        "description": "Enter the linux user name."
+      }
+    },
+    "sshKeyData": {
+      "type": "string",
+      "metadata": {
+        "description": "Please enter the SSH rsa public key file as a string. For example, use the output from: cat ~/.ssh/linux.user.sshkey.pub"
+      }
+    },
+    "lnxAvSetId": {
+      "metadata": {
+        "description": "Enter the avaiability set resource id from the portal."
+      },
+      "type": "string"
+    },
+    "nicId": {
+      "metadata": {
+        "description": "Enter the nic resource id from the portal."
+      },
+      "type": "string"
+    },
+    "saName": {
+      "metadata": {
+        "description": "Enter the storage account name from the portal. This will be used for the diagnostic storage account."
+      },
+      "type": "string"
+    }
+  },
+  "variables": {
+    "azureRegion": "[resourceGroup().location]",
+    "vmName": "[concat(parameters('cspCode'),variables('azureRegion'),parameters('lnxPrefix'),parameters('studentNumber'),parameters('vmSeriesNumber'))]",
+    "lnxVmSize": "Standard_D1_v2",
+    "imagePublisher": "OpenLogic",
+    "imageOffer": "CentOS",
+    "imageSku": "7.4",
+    "diskNameOs": "[toLower(concat(variables('vmName'),'-syst'))]",
+    "saType": "Standard_LRS",
+    "diskNameData": "[toLower(concat(variables('vmName'),'-data'))]",
+    "saUrlSuffix": ".blob.core.windows.net",
+    "diagStorageUri": "[concat('http://',parameters('saName'),variables('saUrlSuffix'))]"
+  },
+  "resources": [
+    {
+      "comments": "04.03.createlnxServerUsingArmTemplate",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[variables('vmName')]",
+      "apiVersion": "2017-03-30",
+      "location": "[variables('azureRegion')]",
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[variables('lnxVmSize')]"
+        },
+        "osProfile": {
+          "computerName": "[variables('vmName')]",
+          "adminUsername": "[parameters('adminUserName')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": "true",
+            "ssh": {
+              "publicKeys": [
+                {
+                  "path": "[concat('/home/',parameters('adminUserName'),'/.ssh/authorized_keys')]",
+                  "keyData": "[parameters('sshKeyData')]"
+                }
+              ]
+            }
+          }
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "[variables('imagePublisher')]",
+            "offer": "[variables('imageOffer')]",
+            "sku": "[variables('imageSku')]",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "[variables('diskNameOs')]",
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "[variables('saType')]"
+            }
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "[variables('diskNameData')]",
+              "caching": "None",
+              "createOption": "Empty",
+              "diskSizeGB": 32,
+              "managedDisk": {
+                "storageAccountType": "[variables('saType')]"
+              }
+            }
+          ]
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[parameters('nicId')]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[variables('diagStorageUri')]"
+          }
+        },
+        "availabilitySet": {
+          "id": "[parameters('lnxAvSetId')]"
+        }
+      }
+    }
+  ]
+}

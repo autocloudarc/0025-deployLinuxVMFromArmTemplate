@@ -1,0 +1,40 @@
+#cloud-config
+hostname: AZREAUS2LX0001 # Remember to replace ## with your student number
+package_upgrade: true
+users:
+-	name: linux.user
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC86CdQeuXbULj/HNqmfZA0SUOp0I3xGCjzBglQDHqC6iOSoog6dSx35GKq8KrZ2KHCoTclQQuwDEVkeEGRw+xIzuWtxCEfsB57YY7cQFbtPaQwVIySLyHMDvdhZUxRkhtwr9U5gyxdRfj3i3DXVsYbY9CL4y+c//spWvDSQKfo0bZo3gO2GwDSuEA+F7Z0Gxj+se+OpSPg5kGlWsP9zqtxNdkqg46M8RIaFcoJxHT/oXKxdN+993tZhX8WRSq+GFXVXVjmq17eNepiHtUkCvcTYPj+EWsDUDMLUj2pFlwCadsWRGz4FvdPcDu8glP9sWjr412088CpqftI6yH9dLBt linuxuser01@PRESTOPA-PROBK
+-   name: steven.fite
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC86CdQeuXbULj/HNqmfZA0SUOp0I3xGCjzBglQDHqC6iOSoog6dSx35GKq8KrZ2KHCoTclQQuwDEVkeEGRw+xIzuWtxCEfsB57YY7cQFbtPaQwVIySLyHMDvdhZUxRkhtwr9U5gyxdRfj3i3DXVsYbY9CL4y+c//spWvDSQKfo0bZo3gO2GwDSuEA+F7Z0Gxj+se+OpSPg5kGlWsP9zqtxNdkqg46M8RIaFcoJxHT/oXKxdN+993tZhX8WRSq+GFXVXVjmq17eNepiHtUkCvcTYPj+EWsDUDMLUj2pFlwCadsWRGz4FvdPcDu8glP9sWjr412088CpqftI6yH9dLBt linuxuser01@PRESTOPA-PROBK
+-   name: jodie.powers
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC86CdQeuXbULj/HNqmfZA0SUOp0I3xGCjzBglQDHqC6iOSoog6dSx35GKq8KrZ2KHCoTclQQuwDEVkeEGRw+xIzuWtxCEfsB57YY7cQFbtPaQwVIySLyHMDvdhZUxRkhtwr9U5gyxdRfj3i3DXVsYbY9CL4y+c//spWvDSQKfo0bZo3gO2GwDSuEA+F7Z0Gxj+se+OpSPg5kGlWsP9zqtxNdkqg46M8RIaFcoJxHT/oXKxdN+993tZhX8WRSq+GFXVXVjmq17eNepiHtUkCvcTYPj+EWsDUDMLUj2pFlwCadsWRGz4FvdPcDu8glP9sWjr412088CpqftI6yH9dLBt linuxuser01@PRESTOPA-PROBK
+-   name: noelle.horton
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC86CdQeuXbULj/HNqmfZA0SUOp0I3xGCjzBglQDHqC6iOSoog6dSx35GKq8KrZ2KHCoTclQQuwDEVkeEGRw+xIzuWtxCEfsB57YY7cQFbtPaQwVIySLyHMDvdhZUxRkhtwr9U5gyxdRfj3i3DXVsYbY9CL4y+c//spWvDSQKfo0bZo3gO2GwDSuEA+F7Z0Gxj+se+OpSPg5kGlWsP9zqtxNdkqg46M8RIaFcoJxHT/oXKxdN+993tZhX8WRSq+GFXVXVjmq17eNepiHtUkCvcTYPj+EWsDUDMLUj2pFlwCadsWRGz4FvdPcDu8glP9sWjr412088CpqftI6yH9dLBt linuxuser01@PRESTOPA-PROBK
+-   name: nell.watson
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC86CdQeuXbULj/HNqmfZA0SUOp0I3xGCjzBglQDHqC6iOSoog6dSx35GKq8KrZ2KHCoTclQQuwDEVkeEGRw+xIzuWtxCEfsB57YY7cQFbtPaQwVIySLyHMDvdhZUxRkhtwr9U5gyxdRfj3i3DXVsYbY9CL4y+c//spWvDSQKfo0bZo3gO2GwDSuEA+F7Z0Gxj+se+OpSPg5kGlWsP9zqtxNdkqg46M8RIaFcoJxHT/oXKxdN+993tZhX8WRSq+GFXVXVjmq17eNepiHtUkCvcTYPj+EWsDUDMLUj2pFlwCadsWRGz4FvdPcDu8glP9sWjr412088CpqftI6yH9dLBt linuxuser01@PRESTOPA-PROBK
+-   name: trevor.lew
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC86CdQeuXbULj/HNqmfZA0SUOp0I3xGCjzBglQDHqC6iOSoog6dSx35GKq8KrZ2KHCoTclQQuwDEVkeEGRw+xIzuWtxCEfsB57YY7cQFbtPaQwVIySLyHMDvdhZUxRkhtwr9U5gyxdRfj3i3DXVsYbY9CL4y+c//spWvDSQKfo0bZo3gO2GwDSuEA+F7Z0Gxj+se+OpSPg5kGlWsP9zqtxNdkqg46M8RIaFcoJxHT/oXKxdN+993tZhX8WRSq+GFXVXVjmq17eNepiHtUkCvcTYPj+EWsDUDMLUj2pFlwCadsWRGz4FvdPcDu8glP9sWjr412088CpqftI6yH9dLBt linuxuser01@PRESTOPA-PROBK
