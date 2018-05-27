@@ -4,7 +4,6 @@
   "parameters": {
     "studentNumber": {
       "type": "string",
-      "defaultValue": "00",
       "allowedValues": [
         "00",
         "01",
@@ -91,11 +90,9 @@
       }
     },
     "vmSeriesNumber": {
-      "defaultValue": "04",
       "allowedValues": [
         "04",
-        "05",
-        "06"
+        "09"
       ],
       "type": "string",
       "metadata": {
