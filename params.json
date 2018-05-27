@@ -6,7 +6,7 @@
         "value": "/subscriptions/51bf817c-66af-4ca8-bcac-13d3df80171a/resourceGroups/rgAdatumDev00/providers/Microsoft.Compute/availabilitySets/AvSeetLX00"
       },
       "nicId": {
-        "value": "/subscriptions/51bf817c-66af-4ca8-bcac-13d3df80171a/resourceGroups/rgAdatumDev00/providers/Microsoft.Network/networkInterfaces/lxnic0009"
+        "value": "/subscriptions/51bf817c-66af-4ca8-bcac-13d3df80171a/resourceGroups/rgAdatumDev00/providers/Microsoft.Network/networkInterfaces/lxnic0004"
       },
       "saName": {
           "value": "bf710c75"
