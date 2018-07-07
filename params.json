@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "lnxAvSetId": {
-        "value": "/subscriptions/51bf817c-66af-4ca8-bcac-13d3df80171a/resourceGroups/rgAdatumDev00/providers/Microsoft.Compute/availabilitySets/AvSeetLX00"
+        "value": "/subscriptions/5c5db896-e9c2-4568-ae10-ee946769310f/resourceGroups/rgAdatumDev10/providers/Microsoft.Compute/availabilitySets/AvSetLX10"
       },
       "nicId": {
-        "value": "/subscriptions/51bf817c-66af-4ca8-bcac-13d3df80171a/resourceGroups/rgAdatumDev00/providers/Microsoft.Network/networkInterfaces/lxnic0004"
+        "value": "/subscriptions/5c5db896-e9c2-4568-ae10-ee946769310f/resourceGroups/rgAdatumDev10/providers/Microsoft.Network/networkInterfaces/lxnic1004"
       },
       "saName": {
-          "value": "bf710c75"
+          "value": "96eed87a"
       }
    }
 }

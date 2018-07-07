@@ -1,0 +1,4 @@
+# Create a new Linux CentOS VM using an existing ARM template
+
+# Create a network interface
+az network nic create --resource-group poc-east-rg --vnet-name East-VNET --subnet lnx-east-sn --name lnx3-vnic

@@ -140,7 +140,7 @@
     "imageSku": "7.4",
     "diskNameOs": "[toLower(concat(variables('vmName'),'-syst'))]",
     "saType": "Standard_LRS",
-    "diskNameData": "[toLower(concat(variables('vmName'),'-data'))]",
+    "diskNameData": "[toLower(concat(variables('vmName'),'-data1'))]",
     "saUrlSuffix": ".blob.core.windows.net",
     "diagStorageUri": "[concat('http://',parameters('saName'),variables('saUrlSuffix'))]"
   },
